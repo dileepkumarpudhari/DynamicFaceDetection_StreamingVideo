@@ -1,4 +1,3 @@
-
 # import the necessary packages
 from imutils import paths
 import numpy as np
@@ -115,7 +114,8 @@ for (i, imagePath) in enumerate(imagePaths):
 			# construct a blob for the face ROI, then pass the blob
 			# through our face embedding model to obtain the 128-d
 			# quantification of the face
-
+			faceBlob = cv2.dnn.blobFromImage(face, 1.0 / 255,
+											 (96, 96), (0, 0, 0), swapRB=True, crop=False)
 			embedder.setInput(faceBlob)
 			vec = embedder.forward()
 
